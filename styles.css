@@ -145,7 +145,7 @@ select {
   padding: 0 4px;
 }
 
-/* 圓形 LOGO（GM_N.jpg） */
+/* 圓形 LOGO（GM_n.jpg） */
 .brand-logo {
   width: clamp(52px, 8vw, 72px);
   height: clamp(52px, 8vw, 72px);
@@ -156,6 +156,10 @@ select {
   box-shadow: 0 10px 24px rgba(48, 28, 12, 0.16);
   border: 2px solid rgba(184, 134, 11, 0.35);
   background: #fffaf3;
+}
+
+.brand-copy {
+  min-width: 0;
 }
 
 .brand-name {
@@ -174,10 +178,66 @@ select {
   letter-spacing: 0.08em;
 }
 
-.tagline {
+.brand-slogan {
+  margin: 10px 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--cinnabar);
+  line-height: 1.5;
+}
+
+.brand-about {
   margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.brand-social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 0;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(48, 28, 12, 0.08);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(184, 134, 11, 0.4);
+  box-shadow: 0 8px 18px rgba(48, 28, 12, 0.12);
+}
+
+.social-link:active {
+  transform: translateY(0);
+}
+
+.social-link img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.tagline {
+  margin: 10px 0 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .layout {
@@ -351,6 +411,47 @@ input:focus,
 
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.55);
+}
+
+/* 資料說明／免責 */
+.disclaimer-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(184, 134, 11, 0.08);
+  border: 1px solid rgba(184, 134, 11, 0.22);
+}
+
+.disclaimer-box h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  color: var(--gold-deep);
+}
+
+.disclaimer-box p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.disclaimer-box--result {
+  margin-top: 18px;
+  background: rgba(166, 61, 47, 0.05);
+  border-color: rgba(166, 61, 47, 0.14);
+}
+
+.disclaimer-box--result h3 {
+  color: var(--cinnabar);
+}
+
+.empty-disclaimer {
+  margin-top: 12px !important;
+  font-size: 0.84rem !important;
+  color: var(--muted) !important;
+  line-height: 1.55 !important;
 }
 
 .tips {
@@ -1089,8 +1190,31 @@ input:focus,
     letter-spacing: 0.04em;
   }
 
+  .brand-slogan {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  .brand-about {
+    font-size: 0.86rem;
+  }
+
+  .brand-social {
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 42px;
+    height: 42px;
+  }
+
+  .social-link img {
+    width: 26px;
+    height: 26px;
+  }
+
   .tagline {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     line-height: 1.5;
   }
 
