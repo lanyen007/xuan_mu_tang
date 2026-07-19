@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f3e8d7" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>玄沐 · 流年運勢查詢（五角能力值版）</title>
+  <link rel="icon" href="GM_n.jpg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="GM_n.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles-2.css" />
+</head>
+<body>
+  <div class="bg-ornament" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="logo-banner">
+      <img
+        class="logo-banner-img"
+        src="GM.jpg"
+        alt="玄沐"
+        width="1440"
+        height="400"
+        decoding="async"
+      />
+    </div>
+    <div class="brand">
+      <img
+        class="brand-logo"
+        src="GM_n.jpg"
+        alt="玄沐"
+        width="150"
+        height="150"
+        decoding="async"
+      />
+      <div class="brand-copy">
+        <p class="brand-name">玄沐</p>
+        <h1>流年運勢查詢</h1>
+        <p class="version-badge">五角能力值版 · index-2</p>
+        <div class="brand-social" aria-label="社群連結">
+          <a
+            class="social-link"
+            href="https://line.me/R/ti/p/@xmt1688"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="官方賴 @xmt1688"
+          >
+            <img src="line.png" alt="官方賴 @xmt1688" width="40" height="40" decoding="async" />
+          </a>
+          <a
+            class="social-link"
+            href="https://www.tiktok.com/@xmt1688"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="TikTok @xmt1688"
+          >
+            <img src="tiktok.png" alt="TikTok @xmt1688" width="40" height="40" decoding="async" />
+          </a>
+          <a
+            class="social-link"
+            href="https://www.threads.com/@xuan_mu_tang"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Threads 玄沐Crystal Threads"
+          >
+            <img src="threads.png" alt="Threads 玄沐Crystal Threads" width="40" height="40" decoding="async" />
+          </a>
+          <a
+            class="social-link"
+            href="https://www.instagram.com/xuan_mu_tang/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Instagram 天然能量水晶 @xuan_mu_tang"
+          >
+            <img src="instagram.png" alt="Instagram 天然能量水晶 @xuan_mu_tang" width="40" height="40" decoding="async" />
+          </a>
+        </div>
+        <p class="tagline">五角能力值呈現 · 依姓名 · 出生地 · 年月日 · 時辰 · 推演命盤、五行與手鍊色</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel form-panel">
+      <div class="panel-head">
+        <h2>出生資料</h2>
+        <p>請輸入真實出生資訊，系統會依出生地校正真太陽時並排盤。</p>
+      </div>
+
+      <aside class="disclaimer-box" role="note">
+        <h3>關於本站推算</h3>
+        <p>
+          本站依<strong>大致的對應規則</strong>（八字五行、姓名數理、五行配色）自動推算，供文化參考、自我省思與手鍊色方向參考。
+          若需要<strong>專業、詳細</strong>的命盤解讀或人生重大決策建議，請洽詢<strong>真人命理師</strong>。
+        </p>
+      </aside>
+
+      <form id="fortune-form" novalidate>
+        <div class="field">
+          <label for="fullname">姓名</label>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            required
+            maxlength="6"
+            placeholder="例：王小明"
+            autocomplete="name"
+          />
+          <p class="field-hint">用於姓名數理五行（康熙筆畫），與八字綜合推薦手鍊珠色</p>
+        </div>
+
+        <div class="field">
+          <label for="birthplace">出生地</label>
+          <div class="select-wrap">
+            <select id="birthplace" name="birthplace" required>
+              <option value="" disabled selected>請選擇出生地</option>
+              <optgroup label="台灣">
+                <option value="台北" data-lng="121.57" data-lat="25.04">台北</option>
+                <option value="新北" data-lng="121.47" data-lat="25.01">新北</option>
+                <option value="桃園" data-lng="121.30" data-lat="24.99">桃園</option>
+                <option value="台中" data-lng="120.68" data-lat="24.15">台中</option>
+                <option value="台南" data-lng="120.21" data-lat="22.99">台南</option>
+                <option value="高雄" data-lng="120.31" data-lat="22.62">高雄</option>
+                <option value="基隆" data-lng="121.74" data-lat="25.13">基隆</option>
+                <option value="新竹" data-lng="120.97" data-lat="24.80">新竹</option>
+                <option value="嘉義" data-lng="120.45" data-lat="23.48">嘉義</option>
+                <option value="宜蘭" data-lng="121.75" data-lat="24.75">宜蘭</option>
+                <option value="花蓮" data-lng="121.60" data-lat="23.99">花蓮</option>
+                <option value="台東" data-lng="121.14" data-lat="22.76">台東</option>
+                <option value="澎湖" data-lng="119.57" data-lat="23.57">澎湖</option>
+                <option value="金門" data-lng="118.32" data-lat="24.44">金門</option>
+                <option value="馬祖" data-lng="119.95" data-lat="26.16">馬祖</option>
+              </optgroup>
+              <optgroup label="中國大陸">
+                <option value="北京" data-lng="116.41" data-lat="39.90">北京</option>
+                <option value="上海" data-lng="121.47" data-lat="31.23">上海</option>
+                <option value="廣州" data-lng="113.26" data-lat="23.13">廣州</option>
+                <option value="深圳" data-lng="114.06" data-lat="22.54">深圳</option>
+                <option value="香港" data-lng="114.17" data-lat="22.32">香港</option>
+                <option value="澳門" data-lng="113.54" data-lat="22.19">澳門</option>
+                <option value="杭州" data-lng="120.16" data-lat="30.27">杭州</option>
+                <option value="南京" data-lng="118.80" data-lat="32.06">南京</option>
+                <option value="成都" data-lng="104.07" data-lat="30.57">成都</option>
+                <option value="重慶" data-lng="106.55" data-lat="29.56">重慶</option>
+                <option value="武漢" data-lng="114.31" data-lat="30.59">武漢</option>
+                <option value="西安" data-lng="108.94" data-lat="34.34">西安</option>
+                <option value="天津" data-lng="117.20" data-lat="39.08">天津</option>
+                <option value="蘇州" data-lng="120.62" data-lat="31.30">蘇州</option>
+                <option value="廈門" data-lng="118.09" data-lat="24.48">廈門</option>
+                <option value="福州" data-lng="119.30" data-lat="26.08">福州</option>
+                <option value="青島" data-lng="120.38" data-lat="36.07">青島</option>
+                <option value="大連" data-lng="121.61" data-lat="38.91">大連</option>
+                <option value="瀋陽" data-lng="123.43" data-lat="41.80">瀋陽</option>
+                <option value="哈爾濱" data-lng="126.64" data-lat="45.76">哈爾濱</option>
+                <option value="長沙" data-lng="112.94" data-lat="28.23">長沙</option>
+                <option value="鄭州" data-lng="113.63" data-lat="34.75">鄭州</option>
+                <option value="昆明" data-lng="102.71" data-lat="25.04">昆明</option>
+                <option value="南寧" data-lng="108.37" data-lat="22.82">南寧</option>
+                <option value="海口" data-lng="110.20" data-lat="20.05">海口</option>
+                <option value="拉薩" data-lng="91.11" data-lat="29.65">拉薩</option>
+                <option value="烏魯木齊" data-lng="87.62" data-lat="43.83">烏魯木齊</option>
+              </optgroup>
+              <optgroup label="其他地區">
+                <option value="東京" data-lng="139.69" data-lat="35.69">東京</option>
+                <option value="首爾" data-lng="126.98" data-lat="37.57">首爾</option>
+                <option value="新加坡" data-lng="103.82" data-lat="1.35">新加坡</option>
+                <option value="吉隆坡" data-lng="101.69" data-lat="3.14">吉隆坡</option>
+                <option value="曼谷" data-lng="100.50" data-lat="13.76">曼谷</option>
+                <option value="紐約" data-lng="-74.01" data-lat="40.71">紐約</option>
+                <option value="洛杉磯" data-lng="-118.24" data-lat="34.05">洛杉磯</option>
+                <option value="倫敦" data-lng="-0.13" data-lat="51.51">倫敦</option>
+                <option value="巴黎" data-lng="2.35" data-lat="48.86">巴黎</option>
+                <option value="雪梨" data-lng="151.21" data-lat="-33.87">雪梨</option>
+              </optgroup>
+              <option value="其他" data-lng="120.00" data-lat="25.00">其他／未知（以東經 120° 估算）</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="birthdate">出生年月日</label>
+            <input type="date" id="birthdate" name="birthdate" required min="1900-01-01" max="2100-12-31" />
+          </div>
+          <div class="field">
+            <label for="birthtime">出生時間</label>
+            <input type="time" id="birthtime" name="birthtime" required value="12:00" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="gender">性別（影響大運順逆）</label>
+            <div class="select-wrap">
+              <select id="gender" name="gender">
+                <option value="male">男</option>
+                <option value="female">女</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="query-year">查詢流年年份</label>
+            <input type="number" id="query-year" name="query-year" min="1900" max="2100" step="1" />
+          </div>
+        </div>
+
+        <div class="field checkbox-field">
+          <label class="checkbox-label">
+            <input type="checkbox" id="use-true-solar" checked />
+            <span>依出生地經度校正真太陽時（建議開啟）</span>
+          </label>
+        </div>
+
+        <p id="form-error" class="form-error" hidden></p>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">
+            <span>查詢流年運勢</span>
+          </button>
+          <button type="button" class="btn btn-ghost" id="reset-btn">重設</button>
+        </div>
+      </form>
+
+      <aside class="tips">
+        <h3>使用說明</h3>
+        <ul>
+          <li>請填真實姓名（2～6 字中文），系統會算姓名五行。</li>
+          <li>出生時間越準確，時柱與流年細節越可靠。</li>
+          <li>手鍊色以<strong>八字用神為主、姓名補缺為輔</strong>綜合判斷。</li>
+          <li>結果為規則推算的大致方向，非專業命理鑑定。</li>
+          <li>若需專業、詳細解讀，請找<strong>真人命理師</strong>。</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="panel result-panel" id="result-panel" hidden>
+      <div class="panel-head result-head">
+        <div>
+          <p class="eyebrow" id="result-subtitle">流年報告</p>
+          <h2 id="result-title">您的流年運勢</h2>
+        </div>
+        <div class="year-badge" id="year-badge">—</div>
+      </div>
+
+      <div class="meta-grid" id="meta-grid"></div>
+
+      <div class="pillars-section">
+        <h3>命盤四柱</h3>
+        <div class="pillars" id="pillars"></div>
+      </div>
+
+      <div class="score-section">
+        <div class="score-card">
+          <div class="score-ring" id="score-ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="52" />
+              <circle class="ring-fg" id="score-circle" cx="60" cy="60" r="52" />
+            </svg>
+            <div class="score-value">
+              <strong id="score-num">—</strong>
+              <span>綜合指數</span>
+            </div>
+          </div>
+          <div class="score-copy">
+            <h3 id="score-label">—</h3>
+            <p id="score-summary">—</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aspect-radar-wrap" id="aspect-grid"></div>
+
+      <div class="detail-blocks">
+        <article class="detail-card" id="card-liunian">
+          <h3>流年總論</h3>
+          <div class="detail-body" id="liunian-body"></div>
+        </article>
+        <article class="detail-card" id="card-advice">
+          <h3>開運建議</h3>
+          <div class="detail-body" id="advice-body"></div>
+        </article>
+        <article class="detail-card" id="card-name">
+          <h3>姓名五行</h3>
+          <div class="detail-body" id="name-body"></div>
+        </article>
+        <article class="detail-card" id="card-crystals">
+          <h3>適合的水晶珠手鍊</h3>
+          <div class="detail-body" id="crystals-body"></div>
+        </article>
+        <article class="detail-card" id="card-elements">
+          <h3>五行能力值</h3>
+          <div class="detail-body" id="elements-body"></div>
+        </article>
+        <article class="detail-card" id="card-months">
+          <h3>流月重點</h3>
+          <div class="detail-body" id="months-body"></div>
+        </article>
+      </div>
+
+      <aside class="disclaimer-box disclaimer-box--result" role="note">
+        <h3>溫馨提醒</h3>
+        <p>
+          以上內容依本站<strong>大致對應規則</strong>自動產生，僅供文化娛樂、自我省思與手鍊色參考。
+          與專業排盤或真人解讀可能有差異。若需要專業、詳細的命理解讀，請洽詢<strong>真人命理師</strong>；重大決策請理性判斷。
+        </p>
+      </aside>
+    </section>
+
+    <section class="panel empty-panel" id="empty-panel">
+      <div class="empty-state">
+        <img class="empty-icon" src="GM_n.jpg" alt="玄沐" width="150" height="150" decoding="async" />
+        <h2>尚未查詢</h2>
+        <p>於左側填寫姓名、出生地、出生年月日與時間後，即可查看命盤、姓名五行與水晶珠手鍊色建議。</p>
+        <p class="empty-disclaimer">結果為大致規則推算；專業詳細解讀請找真人命理師。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      玄沐 · 流年運勢查詢（五角能力值版 index-2）· 依大致對應規則自動推算，僅供文化娛樂與自我省思 ·
+      專業詳細解讀請洽真人命理師 · 重大決策請理性判斷
+    </p>
+  </footer>
+
+  <script src="name-wuxing.js"></script>
+  <script src="bazi.js"></script>
+  <script src="app-2.js"></script>
+</body>
+</html>
