@@ -8,15 +8,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="format-detection" content="telephone=no" />
-  <title>玄沐 · 流年運勢查詢</title>
+  <title>玄沐 · 八字命盤適合的水晶手鍊顏色</title>
   <link rel="icon" href="GM_n.jpg" type="image/jpeg" />
   <link rel="apple-touch-icon" href="GM_n.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-3.css" />
 </head>
-<body>
+<body class="page-index-3">
   <div class="bg-ornament" aria-hidden="true"></div>
   <div class="bg-glow" aria-hidden="true"></div>
 
@@ -42,46 +42,23 @@
       />
       <div class="brand-copy">
         <p class="brand-name">玄沐</p>
-        <h1>流年運勢查詢</h1>
+        <h1>八字命盤 · 水晶手鍊色</h1>
+        <p class="version-badge">手鍊專查版 · index-3</p>
         <div class="brand-social" aria-label="社群連結">
-          <a
-            class="social-link"
-            href="https://line.me/R/ti/p/@xmt1688"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="官方賴 @xmt1688"
-          >
+          <a class="social-link" href="https://line.me/R/ti/p/@xmt1688" target="_blank" rel="noopener noreferrer" title="官方賴 @xmt1688">
             <img src="line.png" alt="官方賴 @xmt1688" width="40" height="40" decoding="async" />
           </a>
-          <a
-            class="social-link"
-            href="https://www.tiktok.com/@xmt1688"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="TikTok @xmt1688"
-          >
+          <a class="social-link" href="https://www.tiktok.com/@xmt1688" target="_blank" rel="noopener noreferrer" title="TikTok @xmt1688">
             <img src="tiktok.png" alt="TikTok @xmt1688" width="40" height="40" decoding="async" />
           </a>
-          <a
-            class="social-link"
-            href="https://www.threads.com/@xuan_mu_tang"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Threads 玄沐Crystal Threads"
-          >
+          <a class="social-link" href="https://www.threads.com/@xuan_mu_tang" target="_blank" rel="noopener noreferrer" title="Threads 玄沐Crystal Threads">
             <img src="threads.png" alt="Threads 玄沐Crystal Threads" width="40" height="40" decoding="async" />
           </a>
-          <a
-            class="social-link"
-            href="https://www.instagram.com/xuan_mu_tang/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Instagram 天然能量水晶 @xuan_mu_tang"
-          >
+          <a class="social-link" href="https://www.instagram.com/xuan_mu_tang/" target="_blank" rel="noopener noreferrer" title="Instagram 天然能量水晶 @xuan_mu_tang">
             <img src="instagram.png" alt="Instagram 天然能量水晶 @xuan_mu_tang" width="40" height="40" decoding="async" />
           </a>
         </div>
-        <p class="tagline">依姓名 · 出生地 · 年月日 · 時辰 · 推演命盤、五行與手鍊色</p>
+        <p class="tagline">輸入姓名與八字出生資料，查詢命盤用神與適合的水晶珠手鍊顏色</p>
       </div>
     </div>
   </header>
@@ -90,30 +67,22 @@
     <section class="panel form-panel">
       <div class="panel-head">
         <h2>出生資料</h2>
-        <p>請輸入真實出生資訊，系統會依出生地校正真太陽時並排盤。</p>
+        <p>依八字命盤與姓名五行，推算適合的手鍊主色與珠子。</p>
       </div>
 
       <aside class="disclaimer-box" role="note">
         <h3>關於本站推算</h3>
         <p>
-          本站依<strong>大致的對應規則</strong>（八字五行、姓名數理、五行配色）自動推算，供文化參考、自我省思與手鍊色方向參考。
-          若需要<strong>專業、詳細</strong>的命盤解讀或人生重大決策建議，請洽詢<strong>真人命理師</strong>。
+          本站依<strong>大致的對應規則</strong>（八字用神、姓名數理、五行配色）自動推算，供文化參考與選珠方向。
+          若需要<strong>專業、詳細</strong>解讀，請洽詢<strong>真人命理師</strong>。
         </p>
       </aside>
 
       <form id="fortune-form" novalidate>
         <div class="field">
           <label for="fullname">姓名</label>
-          <input
-            type="text"
-            id="fullname"
-            name="fullname"
-            required
-            maxlength="6"
-            placeholder="例：王小明"
-            autocomplete="name"
-          />
-          <p class="field-hint">用於姓名數理五行（康熙筆畫），與八字綜合推薦手鍊珠色</p>
+          <input type="text" id="fullname" name="fullname" required maxlength="6" placeholder="例：王小明" autocomplete="name" />
+          <p class="field-hint">用於姓名數理五行，與八字用神綜合推薦手鍊珠色</p>
         </div>
 
         <div class="field">
@@ -195,19 +164,13 @@
           </div>
         </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="gender">性別（影響大運順逆）</label>
-            <div class="select-wrap">
-              <select id="gender" name="gender">
-                <option value="male">男</option>
-                <option value="female">女</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label for="query-year">查詢流年年份</label>
-            <input type="number" id="query-year" name="query-year" min="1900" max="2100" step="1" />
+        <div class="field">
+          <label for="gender">性別</label>
+          <div class="select-wrap">
+            <select id="gender" name="gender">
+              <option value="male">男</option>
+              <option value="female">女</option>
+            </select>
           </div>
         </div>
 
@@ -222,7 +185,7 @@
 
         <div class="actions">
           <button type="submit" class="btn btn-primary">
-            <span>查詢流年運勢</span>
+            <span>查詢適合手鍊色</span>
           </button>
           <button type="button" class="btn btn-ghost" id="reset-btn">重設</button>
         </div>
@@ -231,20 +194,24 @@
       <aside class="tips">
         <h3>使用說明</h3>
         <ul>
-          <li>請填真實姓名（2～6 字中文），系統會算姓名五行。</li>
-          <li>出生時間越準確，時柱與流年細節越可靠。</li>
-          <li>手鍊色以<strong>八字用神為主、姓名補缺為輔</strong>綜合判斷。</li>
-          <li>結果為規則推算的大致方向，非專業命理鑑定。</li>
-          <li>若需專業、詳細解讀，請找<strong>真人命理師</strong>。</li>
+          <li>請填真實姓名與出生資料，以排出八字命盤。</li>
+          <li>手鍊色以<strong>八字用神為主、姓名補缺為輔</strong>。</li>
+          <li>出生時間越準，時柱與用神判斷越穩定。</li>
+          <li>結果為大致規則推算；專業詳細請找<strong>真人命理師</strong>。</li>
         </ul>
+        <p class="tips-links">
+          其他版本：
+          <a href="index.html">流年運勢</a> ·
+          <a href="index-2.html">五角能力值</a>
+        </p>
       </aside>
     </section>
 
     <section class="panel result-panel" id="result-panel" hidden>
       <div class="panel-head result-head">
         <div>
-          <p class="eyebrow" id="result-subtitle">流年報告</p>
-          <h2 id="result-title">您的流年運勢</h2>
+          <p class="eyebrow" id="result-subtitle">手鍊色報告</p>
+          <h2 id="result-title">八字命盤與手鍊色</h2>
         </div>
         <div class="year-badge" id="year-badge">—</div>
       </div>
@@ -256,59 +223,26 @@
         <div class="pillars" id="pillars"></div>
       </div>
 
-      <div class="score-section">
-        <div class="score-card">
-          <div class="score-ring" id="score-ring">
-            <svg viewBox="0 0 120 120" aria-hidden="true">
-              <circle class="ring-bg" cx="60" cy="60" r="52" />
-              <circle class="ring-fg" id="score-circle" cx="60" cy="60" r="52" />
-            </svg>
-            <div class="score-value">
-              <strong id="score-num">—</strong>
-              <span>綜合指數</span>
-            </div>
-          </div>
-          <div class="score-copy">
-            <h3 id="score-label">—</h3>
-            <p id="score-summary">—</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="aspect-grid" id="aspect-grid"></div>
-
-      <div class="detail-blocks">
-        <article class="detail-card" id="card-liunian">
-          <h3>流年總論</h3>
-          <div class="detail-body" id="liunian-body"></div>
-        </article>
-        <article class="detail-card" id="card-advice">
-          <h3>開運建議</h3>
-          <div class="detail-body" id="advice-body"></div>
-        </article>
-        <article class="detail-card" id="card-name">
-          <h3>姓名五行</h3>
-          <div class="detail-body" id="name-body"></div>
-        </article>
-        <article class="detail-card" id="card-crystals">
-          <h3>適合的水晶珠手鍊</h3>
-          <div class="detail-body" id="crystals-body"></div>
+      <div class="detail-blocks detail-blocks--i3">
+        <article class="detail-card" id="card-bazi-note">
+          <h3>命盤與用神摘要</h3>
+          <div class="detail-body" id="bazi-note-body"></div>
         </article>
         <article class="detail-card" id="card-elements">
-          <h3>八字五行能量</h3>
+          <h3>五行能力值</h3>
           <div class="detail-body" id="elements-body"></div>
         </article>
-        <article class="detail-card" id="card-months">
-          <h3>流月重點</h3>
-          <div class="detail-body" id="months-body"></div>
+        <article class="detail-card" id="card-crystals">
+          <h3>適合的水晶珠手鍊顏色</h3>
+          <div class="detail-body" id="crystals-body"></div>
         </article>
       </div>
 
       <aside class="disclaimer-box disclaimer-box--result" role="note">
         <h3>溫馨提醒</h3>
         <p>
-          以上內容依本站<strong>大致對應規則</strong>自動產生，僅供文化娛樂、自我省思與手鍊色參考。
-          與專業排盤或真人解讀可能有差異。若需要專業、詳細的命理解讀，請洽詢<strong>真人命理師</strong>；重大決策請理性判斷。
+          以上依<strong>大致對應規則</strong>自動產生，僅供文化娛樂、選珠參考。
+          與專業排盤可能有差異。專業詳細解讀請洽<strong>真人命理師</strong>；重大決策請理性判斷。
         </p>
       </aside>
     </section>
@@ -317,7 +251,7 @@
       <div class="empty-state">
         <img class="empty-icon" src="GM_n.jpg" alt="玄沐" width="150" height="150" decoding="async" />
         <h2>尚未查詢</h2>
-        <p>於左側填寫姓名、出生地、出生年月日與時間後，即可查看命盤、姓名五行與水晶珠手鍊色建議。</p>
+        <p>於左側填寫姓名、出生地、出生年月日與時間後，即可查看八字命盤與適合的水晶手鍊顏色。</p>
         <p class="empty-disclaimer">結果為大致規則推算；專業詳細解讀請找真人命理師。</p>
       </div>
     </section>
@@ -325,13 +259,13 @@
 
   <footer class="site-footer">
     <p>
-      玄沐 · 流年運勢查詢 · 依大致對應規則自動推算，僅供文化娛樂與自我省思 ·
+      玄沐 · 八字命盤適合的水晶手鍊顏色（index-3）· 依大致對應規則自動推算 ·
       專業詳細解讀請洽真人命理師 · 重大決策請理性判斷
     </p>
   </footer>
 
   <script src="name-wuxing.js"></script>
   <script src="bazi.js"></script>
-  <script src="app.js"></script>
+  <script src="app-3.js"></script>
 </body>
 </html>
