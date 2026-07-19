@@ -588,58 +588,181 @@
       nameAnalysis
     );
 
-    advice.push(`八字用神偏「${favorList.join("、")}」；流年可多接觸相關顏色與行業。`);
+    // —— 開運建議：依日主／身強弱／流年十神／分項分數／姓名 個人化 ——
+    const flowLabel = STEMS[flow.stem] + BRANCHES[flow.branch];
+    const flowElem = STEM_ELEMS[flow.stem];
+    const strengthTone =
+      chart.strength >= 65 ? "身偏強" : chart.strength <= 40 ? "身偏弱" : "身中和";
+    const godTips = {
+      比肩: "宜合作也防爭奪，資源共享時先講清楚界線。",
+      劫財: "支出與人情關說較多，重大財務勿情緒下決定。",
+      食神: "利發揮專長與口才，適合創作、教學或輕鬆社交。",
+      傷官: "表達欲強，宜把創意落成作品，少與上司硬槓。",
+      偏財: "偏財機會與人脈流動增，仍忌槓桿與來路不明之財。",
+      正財: "利穩定收成與本業薪資，適合按計畫存錢與還款。",
+      七殺: "壓力與競爭明顯，宜訂優先順序，硬仗只打關鍵的一場。",
+      正官: "規矩與責任加重，利升遷考核，忌犯規與延遲交付。",
+      偏印: "思緒多、靈感也多，適合進修研究，防想太多遲遲不動。",
+      正印: "貴人與學習運佳，宜拜師充電，勿過度依賴他人安排。",
+    };
+    const elemIndustry = {
+      木: "文教、設計、植物、新生事業",
+      火: "展演、餐飲、行銷、光電與曝光型工作",
+      土: "地產、管理、中介、穩健服務業",
+      金: "金融、科技、法務、精密與決策型職務",
+      水: "流通、顧問、旅遊、資訊與人脈型工作",
+    };
+    const healthByDay = {
+      木: "肝膽、筋骨、肩頸與用眼過度",
+      火: "心臟循環、血壓與情緒燥熱",
+      土: "脾胃消化、濕重與代謝",
+      金: "肺部呼吸、皮膚與大腸作息",
+      水: "腎膀胱、腰膝與睡眠品質",
+    };
+
     advice.push(
-      `水晶珠手鍊總評：主推「${bracelet.primaryColors.join("、")}」珠色，建議 ${bracelet.stones.slice(0, 3).join("、")} 等串成手鍊。`
+      `【${input.name || "命主"}】日主${dayMaster}（${dayElem}）、${strengthTone}（${chart.strength}），${flow.year}流年${flowLabel}為「${god}」、五行偏「${scores.relStem.type}」。`
     );
-    if (scores.aspects.career >= 75) advice.push("事業：適合爭取曝光、升遷或啟動新專案，把握上半年節奏。");
-    else if (scores.aspects.career < 60) advice.push("事業：以穩紮穩打為主，少開新戰場，重細節與人際協調。");
-    else advice.push("事業：維持現況並小步優化，合作優於單打獨鬥。");
+    advice.push(
+      `用神方向「${favorList.join("、")}」，可多接觸：${favorList.map((e) => elemIndustry[e] || e).join("；")}；顏色以${bracelet.primaryColors.slice(0, 3).join("、")}為主。`
+    );
+    advice.push(
+      `手鍊參考：${bracelet.stones.slice(0, 4).join("、")}等；${godTips[god] || "依節奏進退，重大決策宜三思。"}`
+    );
 
-    if (scores.aspects.wealth >= 75) advice.push("財運：正財穩定，偏財有機會，但仍忌投機槓桿。");
-    else if (scores.aspects.wealth < 60) advice.push("財運：先守現金流，減少非必要開支與保證人風險。");
-    else advice.push("財運：有進有出，適合規劃儲蓄與長期配置。");
+    // 事業
+    {
+      const s = scores.aspects.career;
+      let line = `事業（${s}）：`;
+      if (["正官", "七殺"].includes(god)) {
+        line +=
+          s >= 70
+            ? `流年「${god}」利於扛責與表現，可爭取可見成果或職位調整。`
+            : s >= 55
+              ? `流年「${god}」責任感加重，先把本分做滿再談升遷。`
+              : `流年「${god}」壓力偏大，少開新戰場，重交付品質與人際。`;
+      } else if (["食神", "傷官"].includes(god)) {
+        line +=
+          s >= 70
+            ? `流年「${god}」利創意發揮與對外說明，適合提案、作品或副業技能變現。`
+            : `流年「${god}」宜把想法寫成計畫，避免只吐槽不執行。`;
+      } else if (["比肩", "劫財"].includes(god)) {
+        line +=
+          s >= 65
+            ? `流年「${god}」合作機會多，簽約前分清權責與分潤。`
+            : `流年「${god}」易有競爭或搶功，重要事項自己掌握節奏。`;
+      } else {
+        line +=
+          s >= 75
+            ? "適合爭取曝光、升遷或啟動關鍵專案，把握上半年節奏。"
+            : s >= 60
+              ? "以維持現況並小步優化為主，合作優於硬碰。"
+              : "宜穩紮穩打，少同時開多線，重細節與協調。";
+      }
+      if (chart.strength >= 65) line += " 身強者可主動出手，但忌固執。";
+      else if (chart.strength <= 40) line += " 身弱者宜借力使力，勿一人硬撐。";
+      advice.push(line);
+    }
 
-    if (scores.aspects.love >= 75) advice.push("感情：桃花與互動增溫，單身者可多參加聚會；有伴者宜共同規劃。");
-    else if (scores.aspects.love < 60) advice.push("感情：避免口角與冷暴力，溝通時多留餘地。");
-    else advice.push("感情：平穩中帶點驚喜，用心經營即可。");
+    // 財運
+    {
+      const s = scores.aspects.wealth;
+      let line = `財運（${s}）：`;
+      if (["正財", "偏財"].includes(god)) {
+        line +=
+          s >= 70
+            ? `流年「${god}」進帳機會較明，仍以正職與可追蹤來源為主，忌槓桿。`
+            : `流年「${god}」有財象但波動，先守現金流再談擴張。`;
+      } else if (["劫財", "比肩"].includes(god)) {
+        line += "破財或代墊風險偏高，少當保證人、少跟風投資。";
+      } else if (["食神", "傷官"].includes(god)) {
+        line +=
+          s >= 65
+            ? "利以技能、內容或手藝換取收入，適合精緻小額多元進帳。"
+            : "支出易隨興，先列固定開銷再玩副業。";
+      } else {
+        line +=
+          s >= 75
+            ? "正財穩、偏財可遇，仍忌投機。"
+            : s >= 60
+              ? "收支大致平衡，適合儲蓄與長期配置。"
+              : "先守現金流，減少非必要開支。";
+      }
+      advice.push(line);
+    }
 
-    if (scores.aspects.health < 60) advice.push("健康：注意腸胃、睡眠與意外跌碰，規律作息勝於補品。");
-    else advice.push("健康：維持運動與規律飲食，壓力大時可多親近自然。");
+    // 感情
+    {
+      const s = scores.aspects.love;
+      let line = `感情（${s}）：`;
+      if (branchClash(chart.pillars.day.branch, flow.branch)) {
+        line += "日支與流年相沖，關係易有距離或議題浮上檯面，溝通要慢、少作最後通牒。";
+      } else if (branchCombine(chart.pillars.day.branch, flow.branch)) {
+        line += "日支與流年相合，互動與合作機緣佳，適合深化承諾或認識新朋友。";
+      } else if (s >= 75) {
+        line += `人際熱絡（流年${god}），單身可多參與聚會；有伴者宜共同規劃。`;
+      } else if (s < 60) {
+        line += "情緒易累及關係，避免冷暴力，重要話選對時機說。";
+      } else {
+        line += "整體平穩，用心經營日常溫度即可。";
+      }
+      advice.push(line);
+    }
 
-    advice.push("開運習慣：晨起梳整、整理桌面；重要文件反覆核對；每月擇一固定日檢視目標。");
+    // 健康
+    {
+      const s = scores.aspects.health;
+      const focus = healthByDay[dayElem] || "作息與壓力管理";
+      let line = `健康（${s}）：日主${dayElem}，宜特別留意${focus}。`;
+      if (s < 55) line += " 今年偏耗，睡眠與檢查優先於猛補。";
+      else if (s >= 75) line += " 體力尚可，可建立固定運動習慣。";
+      else line += " 維持規律飲食與伸展，換季時加強防護。";
+      if (["七殺", "傷官"].includes(god)) line += " 流年壓力大，預留空白休息日。";
+      advice.push(line);
+    }
+
+    // 學習貴人
+    {
+      const s = scores.aspects.study;
+      let line = `學習貴人（${s}）：`;
+      if (["正印", "偏印"].includes(god)) {
+        line += `流年「${god}」利進修、證照與長輩貴人，適合系統化學習。`;
+      } else if (s >= 75) {
+        line += "吸收力佳，利考試、課程與跨領域技能。";
+      } else if (s < 60) {
+        line += "專注易散，採番茄鐘或分段學習，減少資訊過載。";
+      } else {
+        line += "可穩定推進一項專長，不必貪多。";
+      }
+      if (nameAnalysis) {
+        line += ` 姓名數理「${nameAnalysis.lacking}」偏弱，學習／貴人面向可多補${nameAnalysis.lacking}行氣場（色系或環境）。`;
+      }
+      advice.push(line);
+    }
+
+    // 開運習慣（依用神與流年而變，避免全員同一句）
+    {
+      const habitColors = bracelet.primaryColors.slice(0, 2).join("、") || favorList.join("、");
+      const habitStone = (bracelet.stones && bracelet.stones[0]) || "白水晶";
+      let habit = `開運習慣：本流年可在辦公或居家放置「${habitColors}」小物，手鍊／飾品優先「${habitStone}」；`;
+      if (scores.relStem.type === "克身" || ["七殺", "正官"].includes(god)) {
+        habit += "每週固定一天只處理待辦、不開新項目，降低被動消耗。";
+      } else if (scores.relStem.type === "生身" || ["正印", "偏印"].includes(god)) {
+        habit += "每週安排一次學習或與前輩請益，把貴人運落到行動。";
+      } else if (["食神", "傷官"].includes(god)) {
+        habit += "每週產出一件可見成果（文案、作品、整理成果），把靈感變現。";
+      } else {
+        habit += "每月選固定一日檢視目標與收支，重要文件雙重核對。";
+      }
+      advice.push(habit);
+    }
 
     const aspectText = {
-      career:
-        scores.aspects.career >= 75
-          ? "貴人與表現運佳，利於爭取資源與話語權。"
-          : scores.aspects.career < 60
-            ? "職場變化多，先求站穩再求突破。"
-            : "事業進度中規中矩，重在持續累積。",
-      wealth:
-        scores.aspects.wealth >= 75
-          ? "進帳機會增加，適合規劃收益與副業。"
-          : scores.aspects.wealth < 60
-            ? "開支易放大，理財以守為攻。"
-            : "收支大致平衡，細水長流。",
-      love:
-        scores.aspects.love >= 75
-          ? "互動熱絡，利於深化關係或認識新朋友。"
-          : scores.aspects.love < 60
-            ? "情緒波動可能影響關係，宜溫柔溝通。"
-            : "感情運勢平穩，適合經營日常溫度。",
-      health:
-        scores.aspects.health >= 75
-          ? "體力與恢復力不錯，可建立運動習慣。"
-          : scores.aspects.health < 60
-            ? "需防過勞與小疾反覆，定期休整。"
-            : "整體健康尚可，注意季節轉換。",
-      study:
-        scores.aspects.study >= 75
-          ? "學習吸收力佳，利考試、進修與證照。"
-          : scores.aspects.study < 60
-            ? "專注力易散，宜分段學習、減少干擾。"
-            : "學業工作技能可持續推進。",
+      career: advice.find((a) => a.startsWith("事業"))?.replace(/^事業（\d+）：/, "") || "事業節奏需配合個人環境。",
+      wealth: advice.find((a) => a.startsWith("財運"))?.replace(/^財運（\d+）：/, "") || "財運宜量力而為。",
+      love: advice.find((a) => a.startsWith("感情"))?.replace(/^感情（\d+）：/, "") || "感情宜真誠溝通。",
+      health: advice.find((a) => a.startsWith("健康"))?.replace(/^健康（\d+）：/, "") || "健康宜規律作息。",
+      study: advice.find((a) => a.startsWith("學習貴人"))?.replace(/^學習貴人（\d+）：/, "") || "學習可持續推進。",
     };
 
     // 流月重點（簡化：以流年支為起點順排）
